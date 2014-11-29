@@ -26,3 +26,16 @@
 *.exe
 *.out
 *.app
+
+/autom4te.cache/
+/autoscan.log
+/configure.scan
+/configure
+/config.h.in
+/config.h
+/config.log
+/config.status
+/aclocal.m4
+/stamp-h1
+Makefile.in
+Makefile
