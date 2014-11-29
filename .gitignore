@@ -37,5 +37,8 @@
 /config.status
 /aclocal.m4
 /stamp-h1
+/libtool
+.deps
+.dirstamp
 Makefile.in
 Makefile
