@@ -3,9 +3,9 @@
 
 AC_PREREQ([2.63])
 
-AC_INIT(rev2, 0.0.1, takei.yuya@gmail.com)
+AC_INIT([rev2], m4_esyscmd([build-aux/git-version]), [takei.yuya@gmail.com])
 
-AC_CONFIG_AUX_DIR([config])
+AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
@@ -16,7 +16,12 @@ LT_INIT
 
 # Checks for programs.
 AC_PROG_CXX
+AC_PROG_AWK
 AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_MAKE_SET
 
 # Checks for libraries.
 

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+git_version_tag="$(git describe --tags --match 'v*.*.*')"
+version="${git_version_tag#v}"
+echo -n "${version}"
