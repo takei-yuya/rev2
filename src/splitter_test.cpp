@@ -2,6 +2,13 @@
 
 #include "splitter.hpp"
 
+TEST(CreateSplitterTest, unknown_splitter)
+{
+  SplitterOption option;
+  option.type = SplitterOption::SPLITTER_TYPE_ERROR;
+  EXPECT_EQ(NULL, CreateSplitter(option));
+}
+
 class LengthSplitterTest : public ::testing::Test
 {
 protected:

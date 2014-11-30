@@ -17,6 +17,7 @@ public:
   enum SplitterType {
     SPLITTER_TYPE_LENGTH = 0,
     SPLITTER_TYPE_WORD,
+    SPLITTER_TYPE_ERROR,
   };
   SplitterType type;
   size_t length;
