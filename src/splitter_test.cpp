@@ -22,6 +22,32 @@ protected:
   Splitter::Bounds result;
 };
 
+TEST_F(LengthSplitterTest, SplitEmpty) {
+  option.length = 3;
+  splitter = CreateSplitter(option);
+  splitter->Split("", result);
+
+  Splitter::Bounds expected;
+
+  EXPECT_EQ(expected, result);
+}
+
+TEST_F(LengthSplitterTest, SplitByZero) {
+  option.length = 0;
+  splitter = CreateSplitter(option);
+  splitter->Split("foobar", result);
+
+  Splitter::Bounds expected;
+  expected.push_back(std::make_pair(0, 1));
+  expected.push_back(std::make_pair(1, 2));
+  expected.push_back(std::make_pair(2, 3));
+  expected.push_back(std::make_pair(3, 4));
+  expected.push_back(std::make_pair(4, 5));
+  expected.push_back(std::make_pair(5, 6));
+
+  EXPECT_EQ(expected, result);
+}
+
 TEST_F(LengthSplitterTest, SplitEach) {
   option.length = 1;
   splitter = CreateSplitter(option);
@@ -154,6 +180,20 @@ TEST_F(WordSplitterTest, SplitTrailedDelim) {
   Splitter::Bounds expected;
   expected.push_back(std::make_pair(0, 3));
   expected.push_back(std::make_pair(4, 4));
+
+  EXPECT_EQ(expected, result);
+}
+
+TEST_F(WordSplitterTest, SplitDelims) {
+  option.delims = " ";
+  splitter = CreateSplitter(option);
+  splitter->Split("   ", result);
+
+  Splitter::Bounds expected;
+  expected.push_back(std::make_pair(0, 0));
+  expected.push_back(std::make_pair(1, 1));
+  expected.push_back(std::make_pair(2, 2));
+  expected.push_back(std::make_pair(3, 3));
 
   EXPECT_EQ(expected, result);
 }

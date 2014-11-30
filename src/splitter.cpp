@@ -7,6 +7,9 @@ public:
   LengthSplitter(size_t len)
     : length_(len)
   {
+    if (length_ <= 0) {
+      length_ = 1;
+    }
   }
 
   void Split(const std::string& str, Bounds& bounds) const
@@ -36,8 +39,10 @@ public:
   {
     Bounds result;
     size_t beg = 0;
+    bool is_first = true;
     while (beg < str.length()) {
-      beg = beg == 0 ? beg : beg + 1;
+      beg = is_first ? beg : beg + 1;
+      is_first = false;
       size_t end = str.find_first_of(delims_, beg);
       if (end == std::string::npos) {
         end = str.length();
